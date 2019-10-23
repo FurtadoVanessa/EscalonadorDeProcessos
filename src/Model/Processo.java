@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Comparator;
+
 public class Processo {
 
 
@@ -28,7 +30,23 @@ public class Processo {
         return true;
     }
 
+    public int getTempoRestante(){
+        return this.tempoRestante;
+    }
     public int getID(){
         return this.ID;
     }
+
+    public void setHoraDeFim(int hora){
+        this.horaDeFim = hora;
+    }
+
+    public int getTempo(){
+        return this.horaDeFim - this.horaDeCriacao;
+    }
+
+    public String toString(){
+        return "Processo: "+this.getID()+" - "+this.getTempoRestante();
+    }
+
 }

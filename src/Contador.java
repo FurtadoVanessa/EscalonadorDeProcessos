@@ -4,13 +4,15 @@ public class Contador implements Runnable{
 
 
     @Override
-    public void run() {
-        this.clock++;
-        try {
-            Thread.sleep(200);
-            System.out.println("Clock: "+clock);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public synchronized void run() {
+        while(true) {
+            this.clock++;
+            try {
+                System.out.println("Clock: " + clock);
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

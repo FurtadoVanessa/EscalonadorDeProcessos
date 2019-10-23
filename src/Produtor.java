@@ -1,6 +1,7 @@
 import Model.Processo;
 
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 public class Produtor implements Runnable {
 
@@ -17,15 +18,16 @@ public class Produtor implements Runnable {
     public synchronized void run() {
         while (listaDeProcessos.remainingCapacity()!=0){
             int tamanho = (int)( 10* Math.random() +1);
-            Processo p = new Processo(ID, tamanho, clock.getClock());
-            listaDeProcessos.add(p);
-            System.out.println("Produziu o processo " +ID+" com tamanho "+tamanho);
-            this.ID++;
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                Processo p = new Processo(ID, tamanho, clock.getClock());
+                listaDeProcessos.add(p);
+                System.out.println("Produziu o processo " + ID + " com tamanho " + tamanho + " com o clock de " + clock.getClock());
+                this.ID++;
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
         }
     }
 }
